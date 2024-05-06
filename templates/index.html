@@ -1,0 +1,61 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <!-- Link to Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            padding-top: 40px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            padding: 30px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-control-file {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1 class="text-center">Upload Image</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="imageUpload" class="form-label">Select image to upload:</label>
+                <input type="file" name="image" id="imageUpload" class="form-control-file" required>
+                <div class="invalid-feedback">Please select a file.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+        </form>
+    </div>

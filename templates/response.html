@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response</title>
+</head>
+<body>
+    <h1>{{ context }}</h1>
+    <img src="{{ image_path }}" alt="Uploaded Image">
+    
+    <form id="query-form" method="POST" action="/query">
+        <input type="text" id="query-input" name="query" placeholder="Enter your query...">
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="chatbot-response">
+        <!-- Chatbot responses will be displayed here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('query-form');
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                formData.append('context', "{{ context }}");  // Add context parameter
+                const response = await fetch('/query', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                const chatbotResponse = document.getElementById('chatbot-response');
+                chatbotResponse.innerHTML = data.response;
+                document.getElementById('query-input').value = ''; // Clear the input field
+            });
+        });
+    </script>
+    
+</body>
+</html>
